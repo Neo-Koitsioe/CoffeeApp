@@ -1,14 +1,50 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar >
+    <ion-title style="background-color: rgba(165, 42, 42, 0.794)">
+      Coffee App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="main">
+  <div id="main">
+  <ion-item>
+  <ion-input type="text" value="" placeholder="Name" [(ngModel)]="name"></ion-input>
+</ion-item><br>
+<h2>TOPPINGS</h2>
+
+<ion-item>
+    <ion-label>Whipped Cream</ion-label>
+    <ion-checkbox class="chk1"  checked="false" [(ngModel)] = "cream"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+  <ion-label>Chocolate</ion-label>
+  <ion-checkbox  checked="false" [(ngModel)] = "chocolate"></ion-checkbox>
+</ion-item>
+
+<h2>QUANTITY</h2>
+<div id="group1">
+<button ion-button (click) = "onClick('b1')">+</button><h2 style="color: black">{{quantity}}</h2><button ion-button (click) = "onClick('b2')">-</button>
+</div>
+
+<h2>Order Summary</h2>
+
+<div id="group2">
+<button ion-button (click)="onClickOrder('order')">ORDER</button>
+
+<p *ngIf= "isOrdered ==1">Name: {{name}}<br>
+{{cream}}<br>
+{{chocolate}}<br>
+Quantity: {{quantity}}<br>
+Total: R {{price}}<br>
+Thank You
+</p>
+</div>
+
+<div id="group3">
+<button ion-button (click) ="onClick('reset')">RESET</button>
+</div>
+
+</div>
 </ion-content>
